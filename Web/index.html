@@ -1,0 +1,55 @@
+<link href="https://cdn.jsdelivr.net/npm/@n8n/chat/dist/style.css" rel="stylesheet" />
+<script type="module">
+	import { createChat } from 'https://cdn.jsdelivr.net/npm/@n8n/chat/dist/chat.bundle.es.js';
+
+	createChat({
+	webhookUrl: 'https://ikrion.app.n8n.cloud/webhook/b4a537a9-91e6-40c1-bd4c-aefe4da078c1/chat',
+	webhookConfig: {
+		method: 'POST',
+		headers: {}
+	},
+	target: '#n8n-chat',
+	mode: 'window',
+	chatInputKey: 'chatInput',
+	chatSessionKey: 'sessionId',
+	loadPreviousSession: true,
+	metadata: {},
+	showWelcomeScreen: false,
+	defaultLanguage: 'pt',
+	initialMessages: [
+		'Olá, o que vc quer saber sobre sua apolice'
+	],
+	i18n: {
+		pt: {
+			title: 'ola blz?',
+			subtitle: "teste subtitulo",
+			footer: '',
+			getStarted: 'Nova conversa',
+			inputPlaceholder: 'Digite sua pergunta..',
+		},
+	},
+});
+</script>
+
+<script lang="ts" setup>
+// App.vue
+import { onMounted } from 'vue';
+import '@n8n/chat/style.css';
+import { createChat } from '@n8n/chat';
+
+onMounted(() => {
+	createChat({
+		webhookUrl: 'YOUR_PRODUCTION_WEBHOOK_URL'
+	});
+});
+
+
+
+</script>
+<template>
+	<div></div>
+</template>
+
+
+
+<p>Ikrion</p>
