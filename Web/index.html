@@ -52,4 +52,181 @@ onMounted(() => {
 
 
 
-<p>Ikrion</p>
+import React, { useState } from 'react';
+
+export default function App() {
+  const [formData, setFormData] = useState({
+    nome: '',
+    email: '',
+    telefone: '',
+    mensagem: ''
+  });
+
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    alert('Mensagem enviada com sucesso!');
+    setFormData({ nome: '', email: '', telefone: '', mensagem: '' });
+  };
+
+  return (
+    <div className="font-sans text-gray-800">
+      {/* Header */}
+      <header className="bg-gradient-to-r from-green-500 to-teal-400 text-white py-6 shadow-lg">
+        <div className="max-w-7xl mx-auto px-4 flex justify-between items-center">
+          <h1 className="text-2xl font-bold">AutoWhats IA</h1>
+          <a
+            href="https://wa.me/5511999999999 "
+            target="_blank"
+            rel="noopener noreferrer"
+            className="bg-white text-green-600 px-5 py-2 rounded-full font-semibold hover:bg-gray-100 transition"
+          >
+            Falar com Especialista
+          </a>
+        </div>
+      </header>
+
+      {/* Hero Section */}
+      <section className="bg-white py-20 px-4 text-center">
+        <div className="max-w-3xl mx-auto">
+          <h2 className="text-4xl md:text-5xl font-extrabold mb-6 leading-tight">
+            Automatize seus processos no WhatsApp com Inteligência Artificial
+          </h2>
+          <p className="text-lg text-gray-600 mb-8">
+            Transforme sua comunicação e aumente suas vendas com soluções inteligentes.
+          </p>
+          <a
+            href="#orcamento"
+            className="inline-block bg-green-500 text-white px-6 py-3 rounded-lg text-lg font-semibold hover:bg-green-600 transition"
+          >
+            Solicitar Orçamento
+          </a>
+        </div>
+      </section>
+
+      {/* Formulário de Orçamento */}
+      <section id="orcamento" className="py-16 bg-gray-50 px-4">
+        <div className="max-w-3xl mx-auto bg-white p-8 rounded-xl shadow-md">
+          <h3 className="text-2xl font-bold mb-6 text-center">Solicite seu Orçamento</h3>
+          <form onSubmit={handleSubmit}>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+              <input
+                type="text"
+                name="nome"
+                value={formData.nome}
+                onChange={handleChange}
+                placeholder="Nome"
+                required
+                className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-green-400"
+              />
+              <input
+                type="email"
+                name="email"
+                value={formData.email}
+                onChange={handleChange}
+                placeholder="Email"
+                required
+                className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-green-400"
+              />
+            </div>
+            <div className="mb-4">
+              <input
+                type="tel"
+                name="telefone"
+                value={formData.telefone}
+                onChange={handleChange}
+                placeholder="Telefone"
+                className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-green-400"
+              />
+            </div>
+            <div className="mb-6">
+              <textarea
+                name="mensagem"
+                value={formData.mensagem}
+                onChange={handleChange}
+                rows="4"
+                placeholder="Descreva sua necessidade..."
+                className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-green-400"
+              ></textarea>
+            </div>
+            <button
+              type="submit"
+              className="w-full bg-green-500 text-white py-3 rounded-lg font-semibold hover:bg-green-600 transition"
+            >
+              Enviar Solicitação
+            </button>
+          </form>
+        </div>
+      </section>
+
+      {/* Serviços */}
+      <section className="py-16 bg-white px-4">
+        <div className="max-w-6xl mx-auto">
+          <h3 className="text-3xl font-bold text-center mb-12">Nossos Principais Serviços</h3>
+          <div className="grid md:grid-cols-3 gap-8">
+            <div className="bg-gray-50 p-6 rounded-lg shadow hover:shadow-xl transition">
+              <h4 className="text-xl font-semibold mb-3">Automação de WhatsApp com I.A.</h4>
+              <p className="text-gray-600">
+                Responda automaticamente mensagens, agende atendimentos e interaja com clientes 24/7 usando IA avançada.
+              </p>
+            </div>
+            <div className="bg-gray-50 p-6 rounded-lg shadow hover:shadow-xl transition">
+              <h4 className="text-xl font-semibold mb-3">Analytics para Dados</h4>
+              <p className="text-gray-600">
+                Colete dados estratégicos e tome decisões baseadas em métricas reais do comportamento dos seus clientes.
+              </p>
+            </div>
+            <div className="bg-gray-50 p-6 rounded-lg shadow hover:shadow-xl transition">
+              <h4 className="text-xl font-semibold mb-3">Campanhas em Massa</h4>
+              <p className="text-gray-600">
+                Envie campanhas personalizadas para milhares de contatos simultaneamente com alta taxa de abertura.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* FAQ */}
+      <section className="py-16 bg-gray-50 px-4">
+        <div className="max-w-3xl mx-auto">
+          <h3 className="text-3xl font-bold text-center mb-8">Perguntas Frequentes</h3>
+          <div className="space-y-6">
+            <div>
+              <h4 className="text-xl font-semibold mb-2">Como a automação com IA pode melhorar minhas vendas?</h4>
+              <p className="text-gray-600">
+                Com resposta instantânea e personalização automática, os clientes têm uma experiência mais rápida e eficiente, resultando em maior conversão e fidelização.
+              </p>
+            </div>
+            <div>
+              <h4 className="text-xl font-semibold mb-2">É possível integrar com sistemas existentes?</h4>
+              <p className="text-gray-600">
+                Sim! Oferecemos integração com CRM, ERP e outras ferramentas para garantir que tudo funcione de forma conectada.
+              </p>
+            </div>
+            <div>
+              <h4 className="text-xl font-semibold mb-2">O envio em massa respeita regras do WhatsApp?</h4>
+              <p className="text-gray-600">
+                Totalmente. Usamos métodos autorizados pelo WhatsApp Business API, garantindo segurança e conformidade legal.
+              </p>
+            </div>
+            <div>
+              <h4 className="text-xl font-semibold mb-2">Como posso começar a usar?</h4>
+              <p className="text-gray-600">
+                Basta preencher o formulário acima ou clicar em “Falar com Especialista” para agendar uma consultoria gratuita.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Footer */}
+      <footer className="bg-gray-800 text-white py-8 px-4 text-center">
+        <p>&copy; {new Date().getFullYear()} AutoWhats IA. Todos os direitos reservados.</p>
+        <p className="mt-2 text-sm">Automatizando seu futuro com inteligência artificial.</p>
+      </footer>
+    </div>
+  );
+}
